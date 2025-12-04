@@ -192,6 +192,7 @@ export class Commands {
     private async resSetAccount(comfire: string, chatId: number, qid: string, user: TelegramUser) {
         const lang = await getLocal(user.id);
         const askTime = await dbClient.get('user.reset.ask.' + user.id);
+        dbClient.del('user.reset.ask.' + user.id);
         if (!askTime) {
             this.bot.api.sendMessage(chatId, translate(lang, 'operation_invalid'));
             this.bot.api.answerCallbackQuery(qid);
