@@ -1,3 +1,6 @@
 dist
 *.local
 node_modules
+*.zip
+*.rar
+*.tar
