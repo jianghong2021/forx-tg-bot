@@ -1,0 +1,17 @@
+{
+    "start_msg":"🚀 欢迎来到 FoxHole —— 这是你通往 ForX Hybrid DEX 的邀请制专属入口。\n\n🌍 ForX 是下一代多资产永续合约 DEX，支持 加密资产、代币化美股、外汇与大宗商品，并由顶级做市商与金融基础设施合作伙伴提供支持。\n\n🎯 加入我们的 Telegram 机器人，完成早期任务、获取积分，并锁定初始白名单的优先席位。\n\n🔗 本次为私密、限量邀请计划 —— 累积积分、提升排行榜排名，成为第一批进入 FORX 的用户。",
+    "operation_err":"操作失败，请稍后再试！",
+    "operation_ok":"操作成功！",
+    "operation_invalid ":"操作无效",
+    "reset_account":"重置",
+    "export_key":"私钥",
+    "set_language":"语言",
+    "export_key_msg":"您的钱包私钥: `{key}`",
+    "set_language_msg":"请选择语言",
+    "language_zn":"中文",
+    "language_en":"English",
+    "reset_account_msg":"即将重置您的账号，一切资产将被清空",
+    "reset_account_yes":"确定，我知道后果",
+    "reset_account_no":"算了",
+    "reset_account_canelced":"已取消重置操作"
+}

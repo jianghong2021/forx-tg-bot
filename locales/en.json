@@ -1,0 +1,17 @@
+{
+    "start_msg":"Welcome to FoxHole \n 🚀 your invite-only gateway to ForX Hybrid DEX \n\n 🌍 The next-generation multi-asset PERP DEX (crypto, tokenized equities, FX & commodities) backed by top-tier market makers and financial infrastructure partners. \n\n🎯 Join our Telegram bot to complete early-access tasks, earn points, and secure preferential spots on our initial whitelist. \n\n🔗 This is a private, limited invitation program — collect points, climb the leaderboard, and be first in line when FORX opens.",
+    "operation_err": "Operation failed, please try again later!",
+    "operation_ok": "Operation successful!",
+    "operation_invalid ":"Invalid Operation",
+    "reset_account": "Reset",
+    "export_key": "Private Key",
+    "set_language": "Language",
+    "export_key_msg": "Your wallet private key: `{key}`",
+    "set_language_msg": "Please select a language",
+    "language_zn":"中文",
+    "language_en":"English",
+    "reset_account_msg": "Your account is about to be reset, all assets will be cleared",
+    "reset_account_yes": "Confirm, I understand the consequences",
+    "reset_account_no": "Cancel",
+    "reset_account_canelced": "Reset operation cancelled"
+}
