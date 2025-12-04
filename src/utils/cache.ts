@@ -1,10 +1,11 @@
 import { createClient } from "redis";
 
-export const dbClient = createClient({
+export let dbClient = createClient({
     socket: {
         host: process.env.REDIS_HOST,
-        port: Number(process.env.REDIS_PORT) || 6379
-    }
+        port: Number(process.env.REDIS_PORT) || 6379,
+    },
+    password: process.env.REDIS_PSWD
 })
 
 dbClient.on('error', err => {
@@ -12,6 +13,13 @@ dbClient.on('error', err => {
 })
 
 export async function initCache() {
+    dbClient = createClient({
+    socket: {
+        host: process.env.REDIS_HOST,
+        port: Number(process.env.REDIS_PORT) || 6379,
+    },
+    password: process.env.REDIS_PSWD
+})
     await dbClient.connect();
 }
 
