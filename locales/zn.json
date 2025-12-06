@@ -1,17 +1,20 @@
 {
-    "start_msg":"🚀 欢迎来到 FoxHole —— 这是你通往 ForX Hybrid DEX 的邀请制专属入口。\n\n🌍 ForX 是下一代多资产永续合约 DEX，支持 加密资产、代币化美股、外汇与大宗商品，并由顶级做市商与金融基础设施合作伙伴提供支持。\n\n🎯 加入我们的 Telegram 机器人，完成早期任务、获取积分，并锁定初始白名单的优先席位。\n\n🔗 本次为私密、限量邀请计划 —— 累积积分、提升排行榜排名，成为第一批进入 FORX 的用户。",
+    "start_msg":"欢迎来到 FoxHole —— 你通往 ForX 的轻松通行证。把这里当作你踏入下一代交易世界的幕后入场券。\n\n 🔗 仅限邀请｜低调氛围｜高级权限 \n\n 我们正在打造一款混合式 DEX——无论是加密、股票、外汇、还是大宗商品，你都能一站式交易。由顶级流动性伙伴支持，没噪音，只有真·Alpha。 \n\n ✨ 为什么要提前加入？\n\n 1. 完成简单任务 → 拿积分 \n 2. 登上排行榜，提升排名 \n 3. 在所有人之前解锁白名单福利 \n\n 这不仅是一个等候名单，更是你领先一步的入口。 \n 加入我们，保持同频，等大门打开时，你就是第一批进场的人。 \n\n🔗 👇 轻松上车，从这里开始：\n\n Telegram: https://t.me/forx_commune \n\n Discord: https://discord.com/invite/gYTR2vCdTb \n\n Twitter: https://x.com/ForX_financeX",
     "operation_err":"操作失败，请稍后再试！",
     "operation_ok":"操作成功！",
     "operation_invalid":"操作无效",
     "reset_account":"重置",
     "export_key":"私钥",
     "set_language":"语言",
-    "export_key_msg":"您的钱包私钥: `{key}`",
+    "export_key_msg":"您的钱包私钥如下（请妥善保存，不要泄露给任何人）：\n <code>{key}</code>",
+    "export_key_copy":"我已复制私钥",
     "set_language_msg":"请选择语言",
     "language_zn":"中文",
     "language_en":"English",
-    "reset_account_msg":"即将重置您的账号，一切资产将被清空",
-    "reset_account_yes":"确定，我知道后果",
-    "reset_account_no":"算了",
-    "reset_account_canelced":"已取消重置操作"
+    "language_success":"语言已切换为 {lang}",
+    "reset_account_msg":"即将重置您的账户，所有数据与资产将被清空。请谨慎操作。",
+    "reset_account_yes":"确认重置",
+    "reset_account_no":"取消",
+    "reset_account_success":"账户重置已完成。所有相关数据与资产已按要求清除。",
+    "reset_account_canelced":"重置操作已取消。您的账户状态保持不变。"
 }

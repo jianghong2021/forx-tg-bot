@@ -1,7 +1,5 @@
 import zn from '../../locales/zn.json'
 import en from '../../locales/en.json'
-import { dbClient } from './cache';
-
 interface LangPack {
     [key: string]: string | LangPack;
 }

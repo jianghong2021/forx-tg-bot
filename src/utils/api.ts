@@ -1,4 +1,4 @@
-import { dbClient, getToken } from "./cache";
+import { dbClient, getToken,removeToken } from "./cache";
 import { httpClient } from "./http";
 
 export async function login(user: TelegramUser) {
@@ -53,8 +53,7 @@ export async function resetAccount(user: TelegramUser) {
             uid: user.id
         }
     });
-    dbClient.del('user.token');
-    dbClient.del('user.address');
+    removeToken(user.id);
 }
 
 export async function setLanguage(user: TelegramUser, lang: string) {

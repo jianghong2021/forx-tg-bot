@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { getToken } from './cache';
+import { getToken,removeToken } from './cache';
 
 export const httpClient = new axios.Axios({
     baseURL: process.env.API_HOST
@@ -34,13 +34,19 @@ httpClient.interceptors.request.use(async (config) => {
 })
 
 httpClient.interceptors.response.use(res => {
-
+    const uid = res.config.headers.get('uid');
     if (res.status != 200) {
         return Promise.reject('Net err')
     }
     if (typeof res.data === 'string') {
         try {
-            return JSON.parse(res.data)
+            const data = JSON.parse(res.data);
+            if (data.code == 303) {
+                removeToken(uid?.toString()||'');
+                return Promise.reject('Authorization expired');
+                
+            }
+            return data
         } catch (e) {
             console.log('string')
         }

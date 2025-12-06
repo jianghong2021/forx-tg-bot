@@ -40,7 +40,7 @@ export class Commands {
 
         this.bot.callbackQuery(/cmd_[\d\w]+/i, ctx => {
             login(ctx.from).then(() => {
-                ctx.deleteMessage()
+                ctx.deleteMessage();
                 this.queryCallbackHandler(ctx.callbackQuery.data, ctx.chatId || 0, ctx.callbackQuery.id, ctx.from);
             }).catch(err => {
                 console.error(err)
@@ -110,15 +110,32 @@ export class Commands {
             case 'reset':
                 this.resSetAccount(text, chatId, qid, user);
                 break
+            case 'copykey':
+                this.copyPrivateKey( chatId, qid, user)
         }
     }
 
     private async exportKey(chatId: number, user: TelegramUser) {
-        const key = await getWalletKey(user);
+        const key = await getWalletKey(user).catch(() => 'err');
         const lang = await getLocal(user.id);
+        const keyboards = [
+            [
+                {
+                    text: translate(lang, 'export_key_copy'),
+                    callback_data: 'cmd_copykey'
+                },
+            ]
+        ]
         this.bot.api.sendMessage(chatId, translate(lang, 'export_key_msg', { key }), {
-            parse_mode: 'MarkdownV2'
+            parse_mode: 'HTML',
+            reply_markup: {
+                inline_keyboard: keyboards
+            }
         })
+    }
+
+    private async copyPrivateKey(chatId: number, qid: string, user: TelegramUser){
+        
     }
 
     private async showLanguages(chatId: number, user: TelegramUser) {
@@ -146,7 +163,8 @@ export class Commands {
     private async setLanguage(lang: string, chatId: number, qid: string, user: TelegramUser) {
         this.resetKeyBoards(lang);
         setLanguage(user, lang).then(() => {
-            this.bot.api.sendMessage(chatId, translate(lang, 'operation_ok'), {
+            const currLang = translate(lang, 'language_' + lang);
+            this.bot.api.sendMessage(chatId, translate(lang, 'language_success', { lang: currLang }), {
                 reply_markup: {
                     keyboard: this.keyboards,
                     resize_keyboard: true
@@ -204,7 +222,7 @@ export class Commands {
             return
         }
         resetAccount(user).then(() => {
-            this.bot.api.sendMessage(chatId, translate(lang, 'operation_ok'));
+            this.bot.api.sendMessage(chatId, translate(lang, 'reset_account_success'));
         }).catch(() => {
             this.bot.api.sendMessage(chatId, translate(lang, 'operation_err'));
         }).finally(() => {
@@ -215,16 +233,25 @@ export class Commands {
     private async startCmd(ctx: CommandContext<Context>) {
         const lang = await getLocal(ctx.from?.id || 0);
         this.resetKeyBoards(lang);
+        const banner = process.env.TMA_APP_URL + '/images/bot-banner.jpg';
+
         if (ctx.from) {
-            ctx.reply(translate(lang, 'start_msg'), {
+            ctx.replyWithPhoto(banner, {
+                caption: translate(lang, 'start_msg'),
                 reply_markup: {
                     keyboard: this.keyboards,
                     resize_keyboard: true
-                }
+                },
+                parse_mode: 'HTML'
+            })
+            login(ctx.from).catch((err) => {
+                console.error(err)
             });
-            login(ctx.from);
         } else {
-            ctx.reply(translate(lang, 'start_msg'));
+            ctx.replyWithPhoto(banner, {
+                caption: translate(lang, 'start_msg'),
+                parse_mode: 'HTML'
+            })
         }
     }
 }
