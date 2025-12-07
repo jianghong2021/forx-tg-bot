@@ -11,6 +11,7 @@
     "set_language_msg":"请选择语言",
     "language_zn":"中文",
     "language_en":"English",
+    "language_ja":"日本語",
     "language_success":"语言已切换为 {lang}",
     "reset_account_msg":"即将重置您的账户，所有数据与资产将被清空。请谨慎操作。",
     "reset_account_yes":"确认重置",

@@ -11,6 +11,7 @@
     "set_language_msg": "Please select a language",
     "language_zn":"Chinese",
     "language_en":"English",
+    "language_ja":"日本語",
     "language_success":"The language has been switched to {lang}",
     "reset_account_msg": "Your account is about to be reset. All data and assets will be permanently cleared. Please proceed with caution.",
     "reset_account_yes": "Confirm",

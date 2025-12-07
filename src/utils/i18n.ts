@@ -1,13 +1,16 @@
-import zn from '../../locales/zn.json'
+// import zn from '../../locales/zn.json'
 import en from '../../locales/en.json'
+import ja from '../../locales/ja.json'
+
 interface LangPack {
     [key: string]: string | LangPack;
 }
 
-const i18n = {
+export const i18n = {
     messages: {
-        zn,
+        // zn,
         en,
+        ja,
     }
 }
 

@@ -1,0 +1,21 @@
+{
+    "start_msg":"ForXHole へようこそ — ForX への“チル”なパス。ここは、次世代トレーディングシーンへのバックステージパスだと思ってください。\n\n 🔗 招待制 | 落ち着いた雰囲気 | 本格的なアクセス \n\n 私たちは、暗号資産・株式・FX・コモディティなど、あらゆる資産を取引できるハイブリッドDEXを構築しています。トップクラスの流動性パートナーに支えられ、雑音はなし。本物のアルファだけを提供します。\n\n ✨ 早期参加する理由 \n\n 1. シンプルなタスクをこなしてポイント獲得 \n 2. リーダーボードでランクアップ \n 3. 他の誰よりも早くホワイトリスト特典をアンロック \n\n これはただのウェイトリストではありません。あなたの“先行者アドバンテージ”です。\n 気軽に参加して、コミュニティの雰囲気を楽しみ、ゲートが開くその瞬間、最前列に立ちましょう。 \n\n 👇 まずはこちらから。 \n\n Telegram: https://t.me/forx_commune \n\n Discord: https://discord.com/invite/gYTR2vCdTb \n\n Twitter: https://x.com/ForX_financeX",
+    "operation_err":"操作に失敗しました。後でやり直してください！",
+    "operation_ok":"操作に成功しました！",
+    "operation_invalid":"操作が無効です",
+    "reset_account":"リセット",
+    "export_key":"秘密鍵",
+    "set_language":"言語",
+    "export_key_msg":"お客様のウォレットの秘密鍵は以下に表示されています。安全に保管し、第三者と共有しないようにしてください：\n <code>{key}</code>",
+    "export_key_copy":"秘密鍵をコピーしました",
+    "set_language_msg":"言語を選択してください",
+    "language_zn":"中国語",
+    "language_en":"English",
+    "language_ja":"日本語",
+    "language_success":"言語が{lang}に切り替わりました。",
+    "reset_account_msg":"お客様のアカウントはまもなくリセットされます。すべてのデータと資産は永久に削除されますので、十分ご注意のうえ操作してください。",
+    "reset_account_yes":"確認",
+    "reset_account_no":"キャンセル",
+    "reset_account_success":"アカウントのリセットが完了しました。関連するすべてのデータと資産は、ご要望どおり消去されました。",
+    "reset_account_canelced":"リセット操作はキャンセルされました。お客様のアカウント状態に変更はありません。"
+}

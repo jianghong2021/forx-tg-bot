@@ -1,5 +1,5 @@
 import { Bot, CommandContext, Context } from "grammy";
-import { translate } from "./utils/i18n";
+import { translate, i18n } from "./utils/i18n";
 import { getLocal, dbClient } from "./utils/cache";
 import { login, resetAccount, setLanguage, getWalletKey } from "./utils/api";
 
@@ -111,7 +111,7 @@ export class Commands {
                 this.resSetAccount(text, chatId, qid, user);
                 break
             case 'copykey':
-                this.copyPrivateKey( chatId, qid, user)
+                this.copyPrivateKey(chatId, qid, user)
         }
     }
 
@@ -134,24 +134,20 @@ export class Commands {
         })
     }
 
-    private async copyPrivateKey(chatId: number, qid: string, user: TelegramUser){
-        
+    private async copyPrivateKey(chatId: number, qid: string, user: TelegramUser) {
+
     }
 
     private async showLanguages(chatId: number, user: TelegramUser) {
         const lang = await getLocal(user.id);
-        const keyboards = [
-            [
-                {
-                    text: translate(lang, 'language_zn'),
-                    callback_data: 'cmd_language_zn'
-                },
-                {
-                    text: translate(lang, 'language_en'),
-                    callback_data: 'cmd_language_en'
-                }
-            ]
-        ]
+        const keyboards: any[] = [[]];
+        for (const k in i18n.messages) {
+            keyboards[0].push({
+                text: translate(lang, 'language_' + k),
+                callback_data: 'cmd_language_' + k
+            })
+        }
+
         this.bot.api.sendMessage(chatId, translate(lang, 'set_language_msg'), {
             parse_mode: 'MarkdownV2',
             reply_markup: {
