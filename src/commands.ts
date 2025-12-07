@@ -149,7 +149,7 @@ export class Commands {
         }
 
         this.bot.api.sendMessage(chatId, translate(lang, 'set_language_msg'), {
-            parse_mode: 'MarkdownV2',
+            parse_mode: 'HTML',
             reply_markup: {
                 inline_keyboard: keyboards
             }
@@ -196,7 +196,7 @@ export class Commands {
             }
         });
         this.bot.api.sendMessage(chatId, translate(lang, 'reset_account_msg'), {
-            parse_mode: 'MarkdownV2',
+            parse_mode: 'HTML',
             reply_markup: {
                 inline_keyboard: keyboards
             }
