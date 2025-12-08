@@ -30,17 +30,17 @@ export class Commands {
             if (!ctx.from) {
                 return
             }
-            getLocal(ctx.from.id).then((lang) => {
+            login(ctx.from).then(() => {
+                return getLocal(ctx.from!.id)
+            }).then((lang) => {
                 this.resetKeyBoards(lang)
                 const keyboardRes = this.isKeyBorads(ctx.message?.text);
                 if (!ctx.from || !keyboardRes.ok) {
                     return
                 }
-                login(ctx.from).then(() => {
-                    this.keyBoardsHandler(keyboardRes.type, ctx.chatId, ctx.from!);
-                }).catch(err => {
-                    console.error(err)
-                })
+                this.keyBoardsHandler(keyboardRes.type, ctx.chatId, ctx.from!);
+            }).catch(err => {
+                console.error(err)
             })
         })
 
