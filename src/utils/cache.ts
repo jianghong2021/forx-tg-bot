@@ -40,7 +40,7 @@ export function removeToken(uid: string | number) {
     return dbClient.del('user.token.' + uid)
 }
 
-export async function getLocal(uid: string | number) {
+export async function getLocal(uid: string | number) :Promise<string>{
     const lang = await dbClient.get('user.lang.' + uid);
     if (!lang) {
         const info = await getUserInfo(uid);

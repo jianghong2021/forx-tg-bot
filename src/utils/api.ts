@@ -1,9 +1,10 @@
-import { dbClient, getToken,removeToken } from "./cache";
+import { dbClient, getToken,removeToken,getLocal } from "./cache";
 import { httpClient } from "./http";
 
 export async function login(user: TelegramUser) {
     const token = await getToken(user.id)
     if (token) {
+        await getLocal(user.id)
         return
     }
     const res = await httpClient.post('/api/user/login', {

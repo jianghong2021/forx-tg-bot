@@ -27,15 +27,21 @@ export class Commands {
         this.bot.command('start', this.startCmd.bind(this));
 
         this.bot.on('msg:text', ctx => {
-            const keyboardRes = this.isKeyBorads(ctx.message?.text);
-            if (ctx.from && keyboardRes.ok) {
+            if (!ctx.from) {
+                return
+            }
+            getLocal(ctx.from.id).then((lang) => {
+                this.resetKeyBoards(lang)
+                const keyboardRes = this.isKeyBorads(ctx.message?.text);
+                if (!ctx.from || !keyboardRes.ok) {
+                    return
+                }
                 login(ctx.from).then(() => {
                     this.keyBoardsHandler(keyboardRes.type, ctx.chatId, ctx.from!);
                 }).catch(err => {
                     console.error(err)
                 })
-            }
-
+            })
         })
 
         this.bot.callbackQuery(/cmd_[\d\w]+/i, ctx => {
