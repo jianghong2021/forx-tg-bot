@@ -28,20 +28,20 @@ export async function login(user: TelegramUser) {
         }
     });
 
-    const serverUser = await getUserInfo(user);
-    await dbClient.set('user.lang.' + user.id, serverUser.lang, {
-        expiration: {
-            type: 'EX',
-            value: 60 * 20
-        }
-    });
+    await getUserInfo(user.id);
 
 }
 
-export async function getUserInfo(user: TelegramUser) {
+export async function getUserInfo(uid: number|string) {
     const res = await httpClient.post('/api/info/userInfo', undefined, {
         headers: {
-            uid: user.id
+            uid
+        }
+    });
+    await dbClient.set('user.lang.' + uid, res.data.lang, {
+        expiration: {
+            type: 'EX',
+            value: 60 * 60 * 6
         }
     });
     return res.data;

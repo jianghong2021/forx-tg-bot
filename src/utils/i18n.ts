@@ -15,7 +15,7 @@ export const i18n = {
 }
 
 function getMessage(local: string) {
-    return Reflect.get(i18n.messages, local) || {}
+    return Reflect.get(i18n.messages, local) || en;
 }
 
 export function translate(local: string, key: string, data?: any): string {

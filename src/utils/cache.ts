@@ -1,4 +1,5 @@
 import { createClient } from "redis";
+import { getUserInfo } from "./api";
 
 const PING_TIME = 6_000;
 
@@ -41,5 +42,9 @@ export function removeToken(uid: string | number) {
 
 export async function getLocal(uid: string | number) {
     const lang = await dbClient.get('user.lang.' + uid);
-    return lang || 'zn'
+    if (!lang) {
+        const info = await getUserInfo(uid);
+        return info.lang || 'en';
+    }
+    return lang || 'en'
 }
