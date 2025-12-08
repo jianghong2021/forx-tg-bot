@@ -66,7 +66,7 @@ export async function setLanguage(user: TelegramUser, lang: string) {
     await dbClient.set('user.lang.' + user.id, lang, {
         expiration: {
             type: 'EX',
-            value: 60 * 20
+            value: 60 * 60 * 6
         }
     });
 }
