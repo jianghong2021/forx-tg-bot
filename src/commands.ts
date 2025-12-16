@@ -8,15 +8,15 @@ export class Commands {
     private keyboards = [
         [
             {
-                text: translate('zn', 'reset_account'),
+                text: translate('en', 'reset_account'),
                 type: 'reset_account'
             },
             {
-                text: translate('zn', 'export_key'),
+                text: translate('en', 'export_key'),
                 type: 'export_key'
             },
             {
-                text: translate('zn', 'set_language'),
+                text: translate('en', 'set_language'),
                 type: 'set_language'
             }
         ]
@@ -33,7 +33,6 @@ export class Commands {
             login(ctx.from).then(() => {
                 return getLocal(ctx.from!.id)
             }).then((lang) => {
-                this.resetKeyBoards(lang)
                 const keyboardRes = this.isKeyBorads(ctx.message?.text);
                 if (!ctx.from || !keyboardRes.ok) {
                     return
@@ -54,25 +53,6 @@ export class Commands {
 
         })
 
-    }
-
-    private resetKeyBoards(lang: string) {
-        this.keyboards = [
-            [
-                {
-                    text: translate(lang, 'reset_account'),
-                    type: 'reset_account'
-                },
-                {
-                    text: translate(lang, 'export_key'),
-                    type: 'export_key'
-                },
-                {
-                    text: translate(lang, 'set_language'),
-                    type: 'set_language'
-                }
-            ]
-        ]
     }
 
     private isKeyBorads(text?: string) {
@@ -163,7 +143,6 @@ export class Commands {
     }
 
     private async setLanguage(lang: string, chatId: number, qid: string, user: TelegramUser) {
-        this.resetKeyBoards(lang);
         setLanguage(user, lang).then(() => {
             const currLang = translate(lang, 'language_' + lang);
             this.bot.api.sendMessage(chatId, translate(lang, 'language_success', { lang: currLang }), {
@@ -234,7 +213,6 @@ export class Commands {
 
     private async startCmd(ctx: CommandContext<Context>) {
         const lang = await getLocal(ctx.from?.id || 0);
-        this.resetKeyBoards(lang);
         const banner = process.env.TMA_APP_URL + '/images/bot-banner.jpg';
 
         if (ctx.from) {
