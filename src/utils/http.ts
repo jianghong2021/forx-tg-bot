@@ -12,7 +12,7 @@ httpClient.interceptors.request.use(async (config) => {
     }
     const token = await getToken(uid.toString());
 
-    if (token) {
+    if (token && !config.headers.get('Authorization')) {
         config.headers.set('Authorization', `${token}`);
     }
     if (config.url?.startsWith('http')) {
@@ -21,7 +21,7 @@ httpClient.interceptors.request.use(async (config) => {
         config.baseURL = process.env.API_HOST;
     }
     config.headers.set('Server', '1');
-    // config.headers.set('Type', '2');
+    config.headers.set('Type', '2');
 
     if (config.method != 'GET' && config.data) {
         const form = new FormData();

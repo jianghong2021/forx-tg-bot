@@ -1,4 +1,4 @@
-import { dbClient, getToken,removeToken,getLocal } from "./cache";
+import { dbClient, getToken, removeToken, getLocal } from "./cache";
 import { httpClient } from "./http";
 
 export async function login(user: TelegramUser) {
@@ -7,14 +7,19 @@ export async function login(user: TelegramUser) {
         await getLocal(user.id)
         return
     }
-    const res = await httpClient.post('/api/user/login', {
+    const res: any = await httpClient.post('/api/user/login', {
         ...user,
         type: 2
     }, {
         headers: {
-            uid: user.id
+            uid: user.id,
+            Authorization: process.env.API_KEY
         }
     })
+
+    if (res.code == 0) {
+        throw Error(res.msg || 'Net err')
+    }
 
     await dbClient.set('user.token.' + user.id, res.data.token, {
         expiration: {
@@ -33,7 +38,7 @@ export async function login(user: TelegramUser) {
 
 }
 
-export async function getUserInfo(uid: number|string) {
+export async function getUserInfo(uid: number | string) {
     const res = await httpClient.post('/api/info/userInfo', undefined, {
         headers: {
             uid

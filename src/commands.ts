@@ -40,6 +40,7 @@ export class Commands {
                 this.keyBoardsHandler(keyboardRes.type, ctx.chatId, ctx.from!);
             }).catch(err => {
                 console.error(err)
+                ctx.reply("login failed")
             })
         })
 
@@ -49,6 +50,7 @@ export class Commands {
                 this.queryCallbackHandler(ctx.callbackQuery.data, ctx.chatId || 0, ctx.callbackQuery.id, ctx.from);
             }).catch(err => {
                 console.error(err)
+                ctx.reply("login failed")
             })
 
         })
@@ -96,8 +98,6 @@ export class Commands {
             case 'reset':
                 this.resSetAccount(text, chatId, qid, user);
                 break
-            case 'copykey':
-                this.copyPrivateKey(chatId, qid, user)
         }
     }
 
@@ -118,10 +118,6 @@ export class Commands {
                 inline_keyboard: keyboards
             }
         })
-    }
-
-    private async copyPrivateKey(chatId: number, qid: string, user: TelegramUser) {
-
     }
 
     private async showLanguages(chatId: number, user: TelegramUser) {
@@ -226,6 +222,7 @@ export class Commands {
             })
             login(ctx.from).catch((err) => {
                 console.error(err)
+                ctx.reply("login failed")
             });
         } else {
             ctx.replyWithPhoto(banner, {
